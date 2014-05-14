@@ -28,6 +28,11 @@
     <strong>Example:</strong>
 </p>
 <pre class="brush: python">
+    checkio(['A', 'D'], 3, 3) == 0.0000 # It's not immediately obvious, but each player will always lose the same number of units
+    checkio(['A', 'D'], 4, 3) == 1.0000
+    checkio(['AA', 'A', 'D', 'DD'], 3, 4) == 0.0186
+    checkio(['AA', 'A', 'D', 'DD'], 4, 4) == 0.4079
+    checkio(['AA', 'A', 'D', 'DD'], 5, 4) == 0.9073
 </pre>
 
 <p class="for_info_only">

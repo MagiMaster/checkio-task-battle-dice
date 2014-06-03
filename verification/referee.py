@@ -38,7 +38,7 @@ api.add_listener(
     ON_CONNECT,
     CheckiOReferee(
         tests=TESTS,
-        checker=checkers.float_comparison(1),
+        checker=checkers.float_comparison(4),
         cover_code={
             'python-27': cover_codes.unwrap_args,
             'python-3': cover_codes.unwrap_args

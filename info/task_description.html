@@ -1,18 +1,18 @@
 <p>
-    For this task, you want to figure out what your probability of winning a game is, or part of a game at least. 
-    The game involves two players moving units around a map. When the units come into conflict, 
-    the two players roll several dice, one for each unit, to see who wins and at what cost. 
-    You want to find the probability of winning one of these conflicts, regardless of any losses. 
-    (If the conflict ends with no units remaining on either side, that's a draw, not a win.) 
+    For this task, you want to figure out what your probability of winning a game is, or part of a game at least.
+    The game involves two players moving units around a map. When the units come into conflict,
+    the two players roll several dice, one for each unit, to see who wins and at what cost.
+    You want to find the probability of winning one of these conflicts, regardless of any losses.
+    (If the conflict ends with no units remaining on either side, that's a draw, not a win.)
 </p>
-    
+
 <p>
-    When a conflict begins, each player rolls one die per unit. 
-    Each die has a number of attack icons and defence icons on each side. 
-    After a roll, each player loses a number of units equal to the number of attack icons the opponent 
-    rolled minus the number of defence icons they rolled themselves. 
-    For example, if player one rolled 2 attack icons and 4 defence icons and 
-    player two rolled 3 attack icons and 1 defence icons, 
+    When a conflict begins, each player rolls one die per unit.
+    Each die has a number of attack icons and defence icons on each side.
+    After a roll, each player loses a number of units equal to the number of attack icons the opponent
+    rolled minus the number of defence icons they rolled themselves.
+    For example, if player one rolled 2 attack icons and 4 defence icons and
+    player two rolled 3 attack icons and 1 defence icons,
     player one would lose 0 units (3 - 4 but you can't lose negative units) and player two would lose 1 unit (2 - 1).
 </p>
 
@@ -21,41 +21,43 @@
 </p>
 
 <p>
-    You are given a description of the dice as a list of what icons are on each face and how many dice each player has. 
-    (All dice are the same.) Each element of the list is a string containing zero or more A's representing 
-    the attack icons and zero or more D's representing the defence icons. (A face can be blank.) 
-    For example, the list ["AAD", "ADD", "A", "D", "", ""] represents a six sided die with two attack and 
-    one defence on one face, one attack and two defence on another, a single attack on the third face, 
+    You are given a description of the dice as a list of what icons are on each face and how many dice each player has.
+    (All dice are the same.) Each element of the list is a string containing zero or more A's representing
+    the attack icons and zero or more D's representing the defence icons. (A face can be blank.)
+    For example, the list ["AAD", "ADD", "A", "D", "", ""] represents a six sided die with two attack and
+    one defence on one face, one attack and two defence on another, a single attack on the third face,
     a single defence on the fourth and two blank faces.
 </p>
-
 <p>
-    <strong>Input:</strong> 
-    A list of strings, <strong>D</strong>, describing the dice used; an integer, 
-    <strong>n1</strong>, representing the number of units player one has; and an integer, 
-    <strong>n2</strong>, representing the number of units player two has.
+    You should calculate the probability that player one will win the conflict.
+    If player one has a 1 in 7 chance of winning, you should return &asymp;0.1429.
+    The result should be given with four digits precision as &plusmn;0.0001.
 </p>
 
 <p>
-    <strong>Output:</strong> 
-    The probability that player one will win the conflict, correct to four decimal places. 
-    (A draw is not counted as a win.) If player one has a 1 in 7 chance of winning, you should return 0.1429.
+    <strong>Input:</strong> Three arguments. A dice description as a list of strings.
+    A number of units for player one and player two as integers.
+</p>
+
+<p>
+    <strong>Output:</strong>
+    The probability that player one will win the conflict as a float or integer.
 </p>
 
 <p>
     <strong>Example:</strong>
 </p>
 <pre class="brush: python">
-    checkio(['A', 'D'], 3, 3) == 0.0000 # It's not immediately obvious, but each player will always lose the same number of units
-    checkio(['A', 'D'], 4, 3) == 1.0000
-    checkio(['AA', 'A', 'D', 'DD'], 3, 4) == 0.0186
-    checkio(['AA', 'A', 'D', 'DD'], 4, 4) == 0.4079
-    checkio(['AA', 'A', 'D', 'DD'], 5, 4) == 0.9073
+battle_probability(['A', 'D'], 3, 3) == 0.0000 # It's not immediately obvious, but each player will always lose the same number of units
+battle_probability(['A', 'D'], 4, 3) == 1.0000
+battle_probability(['AA', 'A', 'D', 'DD'], 3, 4) == 0.0186
+battle_probability(['AA', 'A', 'D', 'DD'], 4, 4) == 0.4079
+battle_probability(['AA', 'A', 'D', 'DD'], 5, 4) == 0.9073
 </pre>
 
 <p class="for_info_only">
     <strong>How it is used:</strong>
-    <i>Such multi-step probability calculations are a staple of both programming contests and probability textbooks.</i>
+    Such multi-step probability calculations are a staple of both programming contests and probability textbooks.
 </p>
 
 <p>

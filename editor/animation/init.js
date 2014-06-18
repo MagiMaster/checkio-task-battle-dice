@@ -39,11 +39,14 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
                 return false;
             }
 
+            //YOUR FUNCTION NAME
+            var fname = 'battle_probability';
+
             var checkioInput = data.in;
-            var checkioInputStr = JSON.stringify(checkioInput);
+            var checkioInputStr = fname + '(' + checkioInput.map(JSON.stringify).join(",") + ')';
 
             var failError = function(dError) {
-                $content.find('.call').html('Fail: checkio(' + checkioInputStr + ')');
+                $content.find('.call').html('Fail: ' + checkioInputStr);
                 $content.find('.output').html(dError.replace(/\n/g, ","));
 
                 $content.find('.output').addClass('error');
@@ -75,18 +78,16 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
             $content.find('.output').html('&nbsp;Your result:&nbsp;' + JSON.stringify(userResult));
 
             if (!result) {
-                $content.find('.call').html('Fail: checkio(' + JSON.stringify(checkioInput) + ')');
+                $content.find('.call').html('Fail: ' + checkioInputStr);
                 $content.find('.answer').html('Right result:&nbsp;' + JSON.stringify(rightResult));
-                //$content.find('.answer').html(result_addon);
                 $content.find('.answer').addClass('error');
                 $content.find('.output').addClass('error');
                 $content.find('.call').addClass('error');
             }
             else {
-                $content.find('.call').html('Pass: checkio(' + JSON.stringify(checkioInput) + ')');
+                $content.find('.call').html('Pass: ' + checkioInputStr);
                 $content.find('.answer').remove();
             }
-            //Dont change the code before it
 
             //Your code here about test explanation animation
             //$content.find(".explanation").html("Something text for example");
@@ -112,8 +113,6 @@ requirejs(['ext_editor_1', 'jquery_190', 'raphael_210'],
 //            $tryit.find('.bn-check').click(function (e) {
 //                e.preventDefault();
 //                this_e.sendToConsoleCheckiO("something");
-//                e.stopPropagation();
-//                return false;
 //            });
 //        });
 

@@ -16,7 +16,7 @@ TESTS = {
 }
 
 def addTest(c, i, a):
-    TESTS[c].append({"input": i, "answer": a})
+    TESTS[c].append({"input": i, "answer": a, "show": round(a, 4)})
 
 addTest("Basics", [['A', 'D'], 3, 3], 0.00000)
 addTest("Basics", [['A', 'D'], 4, 3], 1.00000)

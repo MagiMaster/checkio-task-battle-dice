@@ -7,7 +7,7 @@ if __name__ == '__main__':
         precision = 0.1 ** significant_digits
         return correct - precision < checked < correct + precision
 
-    assert(almost_equal(battle_probability(['A', 'D'], 3, 3), 0.0000)), "Nobody Wins"
+    assert(almost_equal(battle_probability(['A', 'D'], 3, 3), 0.0000)), "Always ties, nobody wins"
     assert(almost_equal(battle_probability(['A', 'D'], 4, 3), 1.0000)), "Always win"
     assert(almost_equal(battle_probability(['AA', 'A', 'D', 'DD'], 3, 4), 0.0186)), "You can win"
     assert(almost_equal(battle_probability(['AA', 'A', 'D', 'DD'], 4, 4), 0.4079)), "Ready to fight"

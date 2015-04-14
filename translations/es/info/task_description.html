@@ -1,0 +1,32 @@
+ tienes de ganar un juego de mesa. El juego consiste en dos jugadores que desplazan unidades sobre un mapa. Cuando las unidades se encuentran para un combate, ambos jugadores lanzan dados, uno por cada unidad, determinando qui&eacute;n gana y a qu&eacute; costo. T&uacute; deber&aacute;s encontrar la probabilidad de ganar una de estas batallas, sin tener en cuenta las p&eacute;rdidas. Recuerda que si la batalla termina con ninguna unidad de cada lado, se considera empate y no una victoria.</p>
+
+<p>Cuando comienza un conflicto, cada jugador tira un dado por unidad. Cada dado tiene un n&uacute;mero particular de iconos de ataque y de defensa en cada lado. Despu&eacute;s de un lanzamiento, un jugador pierde un n&uacute;mero de unidades igual al n&uacute;mero de iconos de ataque que obtuvo su oponente, menos el n&uacute;mero de iconos de defensa que el mismo obtuvo. Por ejemplo, si despu&eacute;s de un lanzamiento un jugador obtuvo 2 iconos de ataque y 4 iconos de defensa, y el otro jugador obtuvo 3 iconos de ataque y 1 icono de defensa, el primer jugador perder&iacute;a 0 unidades (3-4, pero no se puede perder unidades negativas) y el segundo perder&iacute;a 1 unidad (2-1).</p>
+
+<p>Una vez se aplican las p&eacute;rdidas de unidades, los jugadores realizan otro lanzamiento. Esto contin&uacute;a hasta que uno de los jugadores no tiene unidades restantes.</p>
+
+<p>Se te dar&aacute; la descripci&oacute;n de los dados, como una lista de cuales iconos se encuentran en una cara, as&iacute; como la cantidad de dados que cada jugador tiene. Todos los dados son exactamente iguales. Cada elemento de la lista es una cadena (str) que contiene cero o m&aacute;s &#39;A&#39;, representado los iconos de ataque, y cero o m&aacute;s &#39;D&#39; representando los iconos de defensa. Nota: &iexcl;La cara puede estar en blanco! Por ejemplo, la lista [&quot;AAD &quot;, &quot; ADD &quot;, &quot;A&quot;, &quot;D&quot;, &quot;&quot;, &quot;&quot;] representa un dado de seis caras con: dos iconos de ataque y uno de defensa en una cara; un icono de ataque y dos de defensa en otra; un icono de ataque y ninguno de defensa en una tercera cara; un icono de defensa y ninguno de ataque en la cuarta y finalmente, dos caras en blanco.</p>
+
+<p>Deber&aacute;s estimar la probabilidad que el primer jugador gane el conflicto. Si el primer jugador tiene una probabilidad de 1 en 7 de ganar, deber&aacute;s regresar &asymp;0.1429. El resultado deber&aacute; reportarse con cuatro d&iacute;gitos de precisi&oacute;n &plusmn;0.0001.</p>
+
+<p><strong>Datos de Entrada:</strong> Tres argumentos. La descripci&oacute;n del dado como una lista de cadenas(str). El n&uacute;mero de unidades para cada jugador, como dos enteros(int).</p>
+
+<p><strong>Salida:</strong> la probabilidad que el primer jugador gane el conflicto, como un decimal (float) o entero (int).</p>
+
+<p><strong>Ejemplo:</strong></p>
+
+<pre class="brush: python">
+battle_probability([&#39;A&#39;, &#39;D&#39;], 3, 3) == 0.0000 # It&#39;s not immediately obvious, but each player will always lose the same number of units
+battle_probability([&#39;A&#39;, &#39;D&#39;], 4, 3) == 1.0000
+battle_probability([&#39;AA&#39;, &#39;A&#39;, &#39;D&#39;, &#39;DD&#39;], 3, 4) == 0.0186
+battle_probability([&#39;AA&#39;, &#39;A&#39;, &#39;D&#39;, &#39;DD&#39;], 4, 4) == 0.4079
+battle_probability([&#39;AA&#39;, &#39;A&#39;, &#39;D&#39;, &#39;DD&#39;], 5, 4) == 0.9073
+</pre>
+
+<p class="for_info_only"><strong>&iquest;C&oacute;mo se usa?:</strong> C&aacute;lculos de probabilidad con m&uacute;ltiples pasos como el de esta misi&oacute;n, son esenciales tanto en concursos de programaci&oacute;n como en libros de probabilidad.</p>
+
+<p><strong>Condiciones:</strong><br />
+1 &le; <strong>units_one</strong> &le; 10<br />
+1 &le; <strong>units_two</strong> &le; 10<br />
+2 &le; len(<strong>dice_description</strong>) &le; 10<br />
+Hay al menos un icono de ataque en el dado.<br />
+Hay como m&aacute;ximo tres iconos en cada cara.</p>

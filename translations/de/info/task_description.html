@@ -1,56 +1,55 @@
 <p>
-    For this task, you need to figure out what your probability of winning a board game is.
-    The game involves two players moving units around a map.
-    When the units battle and both players roll several dice,
-    one for each unit, to see who wins and at what cost.
-    You want to find the probability of winning one of these battles, regardless of any losses.
-    Keep in mind that if the battle ends with no units remaining on either side, that's a draw, not a win.
+    In dieser Aufgabe musst Du die Wahrscheinlichkeit ein Brettspiel zu gewinnen berechnen.
+    Das Spiel besteht aus zwei Spielern die Einheiten über eine Karte bewegen.
+    Wenn sich Einheiten bekämpfen, würfeln beide Spieler um den Sieg, ein Wurf für jede Einheit.
+    Wir wollen die Wahrscheinlichkeit eines Sieges in einer solchen Schlacht wissen, ungeachtet
+    eigener Verluste. Denke daran, falls die Schlacht ended ohne verbleibende Einheiten auf beiden Seiten,
+    ist das ein Unendschieden, kein Sieg.
 </p>
 
 <p>
-    When a conflict begins, each player rolls one die per unit.
-    Each die has a number of attack icons and defense icons on each side.
-    After a roll, the player loses a number of units equal to the number of attack icons the opponent rolled minus
-    the number of defense icons they rolled themselves.
-    For example, if player one rolled 2 attack icons and 4 defense icons and
-    player two rolled 3 attack icons and 1 defense icons,
-    player one would lose 0 units (3 - 4 but you can't lose negative units) and player two would lose 1 unit (2 - 1).
+    Sowie eine Schlacht beginnt, würfelt jeder Spieler einmal pro Einheit.
+    Jeder Würfel hat eine Anzahl von Angriffs- und Verteidigungszeichen auf jeder Seite.
+    Nach jeder Runde, zieht man die Anzahl gewürfelter Verteidigunszeichen von den gegnerischen Angriffszeichen ab, und hat
+    bei einem positven Ergebnis entsprechend viele Einheiten verloren.
+    Würfelt ein Spieler zum Beispiel 2 Angriffe und 4 Verteidigungen, sein Gegner 3 Angriffe und 1 Verteidigung, 
+    hat er keine Verluste (3 - 4) und sein Gegner würde 1 Einheit verlieren (2 - 1).
 </p>
 
 <p>
-    After unit losses are applied, the players roll again. This continues until one player has no units remaining.
+    Nachdem die verlorenen Einheiten entfernt sind, würfeln die Spieler erneut. Solange bis ein Spieler keine Einheiten
+    mehr hat.
 </p>
 
 <p>
-    You are given a description of the dice as a list of which icons are on a face and how many dice each player has.
-    All of the dice are exactly the same.
-    Each element in the list is a string containing zero or more A's representing the attack icons and
-    zero or more D's representing the defense icons. (A face can be blank.)
-    For example, the list ["AAD", "ADD", "A", "D", "", ""]
-    represents a six sided die with two attack and one defense on one face, one attack and two defense on another,
-    a single attack on the third face, a single defense on the fourth and two blank faces.
+    Du erhälst eine Beschreibung des Würfels, als eine Liste mit den Aktionszeichen auf jeder Seite, und wieviele Einheiten
+    jeder Spieler hat. Die Würfel beider Spieler sind genau gleich.
+    Jedes Element der Liste ist ein String mit keinem oder mehreren A's als Angiffszeichen (Attack), und keinem oder 
+    mehreren D's, welche die Verteidigung (Defense) darstellen. (Eine Seite kann ganz leer sein.)
+    Zum Beispiel die Liste ["AAD", "ADD", "A", "D", "", ""] zeigt einen sechsseitigen Würfel mit zwei Angriffen und einer
+    Verteidigung auf einer Seite, einem Angriff mit zwei Verteidigungen auf der nächsten, einem einzelnen Angriff, einer Verteidigung
+    und zwei leeren Seiten.
 </p>
 <p>
-    You should calculate the probability that player one will win the conflict.
-    If player one has a 1 in 7 chance of winning, you should return &asymp;0.1429.
-    The result should be given with four digits precision as &plusmn;0.0001.
-</p>
-
-<p>
-    <strong>Input:</strong> Three arguments. A dice description as a list of strings.
-    A number of units for player one and player two as integers.
+    Du musst die Wahrscheinlichkeit für einen Sieg von Spieler Eins berechnen.
+    Wenn Spieler Eins eine 1 zu 7 Chance zu gewinnen hat, gibst Du den Wert &asymp;0.1429 zurück.
+    Das Ergebnis sollte also auf vier Nachkommastellen, &plusmn;0.0001, gerundet sein.
 </p>
 
 <p>
-    <strong>Output:</strong>
-    The probability that player one will win the conflict as a float or integer.
+    <strong>Eingabe:</strong> Drei Argumente. Eine Beschreibung des Würfels als eine Liste von Strings. Die Anzahl der Einheiten
+    von Spieler Eins und Zwei als Integer.
+</p>
+<p>
+    <strong>Ausgabe:</strong>
+    Die Wahrscheinlichkeit, dass Spieler Eins die Schlacht gewinnt als Float oder Integer.
 </p>
 
 <p>
-    <strong>Example:</strong>
+    <strong>Beispiele:</strong>
 </p>
 <pre class="brush: python">
-battle_probability(['A', 'D'], 3, 3) == 0.0000 # It's not immediately obvious, but each player will always lose the same number of units
+battle_probability(['A', 'D'], 3, 3) == 0.0000 # Jeder Spieler verliert immer dieselbe Anzahl Einheiten.
 battle_probability(['A', 'D'], 4, 3) == 1.0000
 battle_probability(['AA', 'A', 'D', 'DD'], 3, 4) == 0.0186
 battle_probability(['AA', 'A', 'D', 'DD'], 4, 4) == 0.4079
@@ -58,15 +57,15 @@ battle_probability(['AA', 'A', 'D', 'DD'], 5, 4) == 0.9073
 </pre>
 
 <p class="for_info_only">
-    <strong>How it is used:</strong>
-    Such multi-step probability calculations are a staple of both programming contests and probability textbooks.
+    <strong>Wozu das gut ist:</strong>
+    Diese Art mehrstufiger Wahrscheinlichkeitsberechnungen ist beliebt in Programmierwettkämpfen und Wahrscheinlichkeitslehrbüchern.
 </p>
 
 <p>
-    <strong>Preconditions:</strong><br/>
+    <strong>Bedingungen:</strong><br/>
     1 &le; <strong>units_one</strong> &le; 10<br/>
     1 &le; <strong>units_two</strong> &le; 10<br/>
     2 &le; len(<strong>dice_description</strong>) &le; 10<br/>
-    There is at least 1 attack icon on the die<br/>
-    There are at most 3 icons on each face
+    Es gibt mindestens einen Angriff auf einem Würfel.<br/>
+    Auf einer Seite sind höchstens drei Zeichen.
 </p>
